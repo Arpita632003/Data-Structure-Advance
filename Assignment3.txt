@@ -1,0 +1,479 @@
+#Write a code to reverse a string
+s = "Pwskills"
+rev = s[::-1]
+print(rev)
+
+#Write a code to count the number of vowels in a string
+string = "Geeks for Geeks"
+vowels = "AaEeIiOoUu"
+Check_Vow(string, vowels);
+
+# Write a code to check if a given string is a palindrome or not
+my_str = 'aIbohPhoBiA'
+my_str = my_str.casefold()
+
+# reverse the string
+rev_str = reversed(my_str)
+
+# check if the string is equal to its reverse
+if list(my_str) == list(rev_str):
+   print("The string is a palindrome.")
+else:
+   print("The string is not a palindrome.")
+
+ Write a code to check if two given strings are anagrams of each other
+str1 = "Race"
+str2 = "Care"
+
+# convert both the strings into lowercase
+str1 = str1.lower()
+str2 = str2.lower()
+
+# check if length is same
+if(len(str1) == len(str2)):
+
+    # sort the strings
+    sorted_str1 = sorted(str1)
+    sorted_str2 = sorted(str2)
+
+    # if sorted char arrays are same
+    if(sorted_str1 == sorted_str2):
+        print(str1 + " and " + str2 + " are anagram.")
+    else:
+        print(str1 + " and " + str2 + " are not anagram.")
+
+else:
+    print(str1 + " and " + str2 + " are not anagram.")
+
+
+# Write a code to find all occurrences of a given substring within another string
+def find_all_occurrences(main_string, substring):
+    start = 0
+    occurrences = []
+    
+    while True:
+        start = main_string.find(substring, start)
+        if start == -1:  # No more occurrences found
+            break
+        occurrences.append(start)
+        start += 1  # Move to the next character after the found substring
+    
+    return occurrences
+
+# Write a code to perform basic string compression using the counts of repeated characters
+def compress_string(s):
+    if not s:
+        return ""
+    
+    compressed = []
+    count = 1
+    
+    for i in range(1, len(s)):
+        if s[i] == s[i - 1]:
+            count += 1
+        else:
+            compressed.append(s[i - 1] + str(count))
+            count = 1
+    
+    # Add the last character and its count
+    compressed.append(s[-1] + str(count))
+    
+    compressed_string = ''.join(compressed)
+    
+#Write a code to determine if a string has all unique characters
+def has_unique_characters(s):
+    seen = set()
+    for char in s:
+        if char in seen:
+            return False
+        seen.add(char)
+    return True
+
+# Write a code to convert a given string to uppercase or lowercase
+def convert_to_uppercase(s):
+    return s.upper()
+
+#Write a code to count the number of words in a string
+def count_words(s):
+    # Strip leading and trailing whitespace and split the string into words
+    words = s.strip().split()
+    return len(words)
+
+#Write a code to concatenate two strings without using the + operator
+def concatenate_strings(str1, str2):
+    return ''.join([str1, str2])
+
+# Example 
+string1 = "Hello, "
+string2 = "World!"
+result = concatenate_strings(string1, string2)
+print(result)  
+
+# Write a code to remove all occurrences of a specific element from a list
+def remove_occurrences(lst, element):
+    while element in lst:
+        lst.remove(element)
+
+# Example 
+my_list = [1, 2, 3, 2, 4, 2, 5]
+element_to_remove = 2
+remove_occurrences(my_list, element_to_remove)
+print(my_list)  
+
+# Implement a code to find the second largest number in a given list of integers
+def second_largest(nums):
+    first, second = float('-inf'), float('-inf')
+    
+    for num in nums:
+        if num > first:
+            second = first
+            first = num
+        elif first > num > second:
+            second = num
+            
+    return second if second != float('-inf') else None
+
+# Implement a code to find and remove duplicates from a list while preserving the original order of 
+element
+def remove_duplicates(lst):
+    seen = set()
+    unique_list = []
+    
+    for item in lst:
+        if item not in seen:
+            seen.add(item)
+            unique_list.append(item)
+    
+    return unique_list
+
+#Create a code to count the occurrences of each element in a list and return a dictionary with elements as 
+keys and their counts as values
+def count_occurrences(input_list):
+    count_dict = {}
+    for element in input_list:
+        if element in count_dict:
+            count_dict[element] += 1
+        else:
+            count_dict[element] = 1
+    return count_dict
+
+# Write a code to reverse a list in-place without using any built-in reverse functions
+def reverse_list_in_place(input_list):
+    left = 0
+    right = len(input_list) - 1
+
+    while left < right:
+        # Swap elements
+        input_list[left], input_list[right] = input_list[right], input_list[left]
+        left += 1
+        right -= 1
+
+#Create a code to check if a given list is sorted (either in ascending or descending order) or not
+def is_sorted(input_list):
+    if not input_list:  # An empty list is considered sorted
+        return True
+
+    ascending = all(input_list[i] <= input_list[i + 1] for i in range(len(input_list) - 1))
+    descending = all(input_list[i] >= input_list[i + 1] for i in range(len(input_list) - 1))
+
+    return ascending or descending
+
+#Write a code to merge two sorted lists into a single sorted list
+def merge_sorted_lists(list1, list2):
+    merged_list = []
+    i, j = 0, 0
+
+    # Traverse both lists and compare elements
+    while i < len(list1) and j < len(list2):
+        if list1[i] < list2[j]:
+            merged_list.append(list1[i])
+            i += 1
+        else:
+            merged_list.append(list2[j])
+            j += 1
+
+    # Append any remaining elements from list1
+    while i < len(list1):
+        merged_list.append(list1[i])
+        i += 1
+
+    # Append any remaining elements from list2
+    while j < len(list2):
+        merged_list.append(list2[j])
+        j += 1
+
+    return merged_list
+
+#Implement a code to find the intersection of two given lists
+def intersection(list1, list2):
+    # Convert both lists to sets to find common elements
+    set1 = set(list1)
+    set2 = set(list2)
+
+    # Find the intersection
+    common_elements = set1.intersection(set2)
+
+    # Convert the result back to a list (if needed)
+    return list(common_elements)
+
+#Create a code to find the union of two lists without duplicates
+def union(list1, list2):
+    # Create a set from both lists to remove duplicates and find the union
+    union_set = set(list1) | set(list2)
+    
+    # Convert the set back to a list (if needed)
+    return list(union_set)
+
+#Write a code to shuffle a given list randomly without using any built-in shuffle functions
+import random
+
+def shuffle_list(input_list):
+    # Create a copy of the list to shuffle
+    shuffled_list = input_list[:]
+    n = len(shuffled_list)
+
+    # Fisher-Yates shuffle algorithm
+    for i in range(n - 1, 0, -1):
+        # Generate a random index from 0 to i
+        j = random.randint(0, i)
+        # Swap the elements at indices i and j
+        shuffled_list[i], shuffled_list[j] = shuffled_list[j], shuffled_list[i]
+
+    return shuffled_list
+
+# Write a code that takes two tuples as input and returns a new tuple containing elements that are 
+common to both input tuples
+def common_elements(tuple1, tuple2):
+    # Convert tuples to sets to find common elements
+    set1 = set(tuple1)
+    set2 = set(tuple2)
+
+    # Find the intersection
+    common_set = set1.intersection(set2)
+
+    # Convert the result back to a tuple and return it
+    return tuple(common_set)
+
+#Create a code that prompts the user to enter two sets of integers separated by commas. Then, print the 
+intersection of these two sets
+def get_set_from_input(prompt):
+    user_input = input(prompt)
+    # Convert the input string to a set of integers
+    return set(map(int, user_input.split(',')))
+
+def main():
+    # Get two sets from user input
+    set1 = get_set_from_input("Enter the first set of integers (separated by commas): ")
+    set2 = get_set_from_input("Enter the second set of integers (separated by commas): ")
+
+    # Find the intersection
+    intersection = set1.intersection(set2)
+
+    # Print the result
+    print("The intersection of the two sets is:", intersection)
+
+# Write a code to concatenate two tuples. The function should take two tuples as input and return a new 
+tuple containing elements from both input tuples
+def concatenate_tuples(tuple1, tuple2):
+    # Concatenate the two tuples
+    result_tuple = tuple1 + tuple2
+    return result_tuple
+
+#Develop a code that prompts the user to input two sets of strings. Then, print the elements that are 
+present in the first set but not in the second set
+def get_set_from_input(prompt):
+    user_input = input(prompt)
+    # Convert the input string to a set of strings
+    return set(user_input.split(','))
+
+def main():
+    # Get two sets from user input
+    set1 = get_set_from_input("Enter the first set of strings (separated by commas): ")
+    set2 = get_set_from_input("Enter the second set of strings (separated by commas): ")
+
+    # Find elements in set1 that are not in set2
+    difference = set1 - set2
+
+    # Print the result
+    print("Elements in the first set but not in the second set:", difference)
+
+if __name__ == "__main__":
+    main()
+
+#Create a code that takes a tuple and two integers as input. The function should return a new tuple 
+containing elements from the original tuple within the specified range of indices
+def slice_tuple(original_tuple, start, end):
+    # Return a new tuple containing elements from the specified range
+    return original_tuple[start:end]
+
+# Example 
+my_tuple = (10, 20, 30, 40, 50, 60)
+start_index = 1
+end_index = 4
+result = slice_tuple(my_tuple, start_index, end_index)
+print(result)  
+
+# Write a code that prompts the user to input two sets of characters. Then, print the union of these two sets
+ef get_set_from_input(prompt):
+    user_input = input(prompt)
+    # Convert the input string to a set of characters
+    return set(user_input)
+
+def main():
+    # Get two sets from user input
+    set1 = get_set_from_input("Enter the first set of characters: ")
+    set2 = get_set_from_input("Enter the second set of characters: ")
+
+    # Find the union of the two sets
+    union_set = set1 | set2
+
+    # Print the result
+    print("The union of the two sets is:", union_set)
+
+if __name__ == "__main__":
+    main()
+
+#Develop a code that takes a tuple of integers as input. The function should return the maximum and 
+minimum values from the tuple using tuple unpacking
+def max_min_tuple(input_tuple):
+    # Use built-in functions to find max and min
+    max_value = max(input_tuple)
+    min_value = min(input_tuple)
+    
+    # Return both values as a tuple
+    return max_value, min_value
+
+# Create a code that defines two sets of integers. Then, print the union, intersection, and difference of these 
+two sets
+def main():
+    # Define two sets of integers
+    set1 = {1, 2, 3, 4, 5}
+    set2 = {4, 5, 6, 7, 8}
+
+    # Calculate union, intersection, and difference
+    union_set = set1 | set2
+    intersection_set = set1 & set2
+    difference_set = set1 - set2
+
+    # Print the results
+    print("Set 1:", set1)
+    print("Set 2:", set2)
+    print("Union of Set 1 and Set 2:", union_set)
+    print("Intersection of Set 1 and Set 2:", intersection_set)
+    print("Difference (Set 1 - Set 2):", difference_set)
+
+#Write a code that takes a tuple and an element as input. The function should return the count of 
+occurrences of the given element in the tuple
+def count_occurrences(input_tuple, element):
+    # Use the count method to find occurrences of the element
+    return input_tuple.count(element)
+
+# Example usage
+my_tuple = (1, 2, 3, 1, 4, 1, 5)
+element_to_count = 1
+count = count_occurrences(my_tuple, element_to_count)
+print(f"The element {element_to_count} occurs {count} times in the tuple.")  
+
+# Develop a code that prompts the user to input two sets of strings. Then, print the symmetric difference of 
+these two sets
+def get_set_from_input(prompt):
+    user_input = input(prompt)
+    # Convert the input string to a set of strings
+    return set(user_input.split(','))
+
+def main():
+    # Get two sets from user input
+    set1 = get_set_from_input("Enter the first set of strings (separated by commas): ")
+    set2 = get_set_from_input("Enter the second set of strings (separated by commas): ")
+
+    # Find the symmetric difference of the two sets
+    symmetric_difference = set1.symmetric_difference(set2)
+
+    # Print the result
+    print("The symmetric difference of the two sets is:", symmetric_difference)
+
+# Write a code that takes a list of words as input and returns a dictionary where the keys are unique words 
+and the values are the frequencies of those words in the input list
+def word_frequencies(words):
+    frequency_dict = {}
+    
+    for word in words:
+        if word in frequency_dict:
+            frequency_dict[word] += 1
+        else:
+            frequency_dict[word] = 1
+            
+    return frequency_dict
+
+#Write a code that takes two dictionaries as input and merges them into a single dictionary. If there are 
+common keys, the values should be added together
+def merge_dictionaries(dict1, dict2):
+    merged_dict = dict1.copy()  # Start with a copy of the first dictionary
+
+    for key, value in dict2.items():
+        if key in merged_dict:
+            merged_dict[key] += value  # Add the values for common keys
+        else:
+            merged_dict[key] = value  # Add the new key-value pair
+
+    return merged_dict
+
+#Write a code to access a value in a nested dictionary. The function should take the dictionary and a list of 
+keys as input, and return the corresponding value. If any of the keys do not exist in the dictionary, the 
+function should return None
+def access_nested_dict(nested_dict, keys):
+    current = nested_dict
+    for key in keys:
+        if key in current:
+            current = current[key]  # Move to the next level in the dictionary
+        else:
+            return None  # Return None if the key does not exist
+    return current  # Return the final value if all keys are found
+
+# Example 
+nested_dictionary = {
+    'a': {
+        'b': {
+            'c': 42
+        }
+    },
+    'x': {
+        'y': 100
+    }
+}
+
+# List of keys to access
+keys_to_access = ['a', 'b', 'c']
+value = access_nested_dict(nested_dictionary, keys_to_access)
+print(value)  # Output: 42
+
+# Attempting to access a non-existent key
+keys_to_access_invalid = ['a', 'x', 'c']
+value_invalid = access_nested_dict(nested_dictionary, keys_to_access_invalid)
+print(value_invalid)  # Output: None
+
+# Write a code that takes a dictionary as input and returns a sorted version of it based on the values. You 
+can choose whether to sort in ascending or descending orderdef sort_dictionary_by_value(input_dict, ascending=True):
+    # Sort the dictionary by values
+    sorted_dict = dict(sorted(input_dict.items(), key=lambda item: item[1], reverse=not ascending))
+    return sorted_dict
+
+# Example 
+my_dict = {'apple': 5, 'banana': 2, 'cherry': 10, 'date': 3}
+
+# Sort in ascending order
+sorted_ascending = sort_dictionary_by_value(my_dict, ascending=True)
+print("Sorted in ascending order:", sorted_ascending)  # Output: {'banana': 2, 'date': 3, 'apple': 5, 'cherry': 10}
+
+# Sort in descending order
+sorted_descending = sort_dictionary_by_value(my_dict, ascending=False)
+print("Sorted in descending order:", sorted_descending)  # Output: {'cherry': 10, 'apple': 5, 'date': 3, 'banana': 2}
+
+#
+
+
+
+
+
+
+
